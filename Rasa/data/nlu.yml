@@ -1,0 +1,112 @@
+version: "3.1"
+
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - yo
+    - hello world
+    - hi there
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - thanks, goodbye
+- intent: question 
+  examples: |
+    - which ones
+    - these information is about what.
+    - can you ask me what you want 
+    - ??
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+- intent: version
+  examples: |
+    - can you get the [version](version)
+    - what is the [version](version)
+    - what is the [version](version) please
+    - i want to know about the [version](version) 
+
+- intent: stop
+  examples: |
+    - stop
+    - nevermind
+    - please stop
+    - i want to stop
+    - stop the form
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+- intent: update_account
+  examples: |
+    - I'd like to update my account
+    - Can I update my account 
+    - I'm interested in updating my account
+    - I want to update my account 
+- intent: inform
+  examples: |
+    - i'd like a [ACAZSS1](account_code) 
+    - i want to order a [ACCTYS1](account_code) [FSPA25620514207](account_subscription) 
+    - [ACCEZE1](account_code)
+    - [ACCEDE2](account_code)
+    - [ACCEFD1](account_code)
+    - [ACCETY5](account_code)
+    - [12-04-2022](account_subscriptionValidityDate)
+    - it is [12-06-2022](account_subscriptionValidityDate)
+    - mu subscription Val is [12-04-2022](account_subscriptionValidityDate)
+    - the subscription is [12-04-2022](account_subscriptionValidityDate)
+    - [FSPA20220514207](account_subscription)
+    - My subscription is  [FSPA20220514207](account_subscription) 
+    - [FSPA20220514207](account_subscription) 
+    - [ZSDESS3](account_code)
+    - [FSPA20220514207](account_subscription)
+    - i want a [ACCESS1](account_code) 
+    - my end Date for subscription is  [12/03/2024](account_endDate)
+    - the endDate is [12/03/2024](account_endDate)
+    - [FSPR23351454207](account_subscription)
+    - [FSPA20220514207](account_subscription)
+    - [FSPA23450514207](account_subscription)
+    - [FSPA20220514555](account_subscription)
+    - my startDate is  [12 09 2022](account_startDate)
+    - the startDate is [12 09 2022](account_startDate)
+    - i want a [ACCESS1](account_code)
+    - [SDSD20220514207](account_subscription)
+    - [FSPA20224444207](account_subscription)

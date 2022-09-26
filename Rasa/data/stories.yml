@@ -1,0 +1,110 @@
+version: "3.1"
+
+stories:
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: update_account
+  - action: utter_apply_info
+  - intent: question
+  - action: simple_account_form
+  - active_loop: simple_account_form
+  - slot_was_set:
+    - requested_slot: account_code
+  - slot_was_set:
+    - account_code: ACCESS1
+  - slot_was_set:
+    - account_code: ACCESS1
+  - slot_was_set:
+    - requested_slot: account_endDate
+  - slot_was_set:
+    - account_endDate: 14/09/2024
+  - slot_was_set:
+    - account_endDate: 14/09/2024
+  - slot_was_set:
+    - requested_slot: account_startDate
+  - slot_was_set:
+    - account_startDate: 12/08/2022
+  - slot_was_set:
+    - account_startDate: 12/08/2022
+  - slot_was_set:
+    - requested_slot: account_subscriptionValidityDate
+  - slot_was_set:
+    - account_subscriptionValidityDate: 12/03/2022
+  - slot_was_set:
+    - account_subscriptionValidityDate: 12/03/2022
+  - slot_was_set:
+    - requested_slot: account_subscription
+  - slot_was_set:
+    - account_subscription: FSPA20220514206
+  - slot_was_set:
+    - account_subscription: null
+  - slot_was_set:
+    - requested_slot: account_subscription
+  - slot_was_set:
+    - account_subscription: FSPA20267514207
+  - slot_was_set:
+    - account_subscription: null
+  - slot_was_set:
+    - requested_slot: account_subscription
+  - slot_was_set:
+    - account_subscription: FSFG20220514207
+  - slot_was_set:
+    - account_subscription: FYPA20220514607
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_submit
+  - action: action_get_status
+
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: User interrupts the form and doesn't want to continue
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: update_account
+  - action: utter_apply_info
+  - intent: question
+  - action: simple_account_form
+  - active_loop: simple_account_form
+  - intent: stop
+  - action: utter_ask_continue
+  - or: 
+    - intent: stop
+    - intent: affirm
+  - action: action_deactivate_loop
+  - active_loop: null
+- story: interactive_story1_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: version
+    entities:
+    - version: 12.6.4
+  - action: action_get_version
+
+- story: interactive_story_2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: update_account
+  - action: utter_apply_info
+  - intent: question
+  - action: simple_account_form
+  - active_loop: simple_account_form
+  - slot_was_set:
+    - requested_slot: account_code
+  - intent: stop
+  - action: utter_ask_continue
+  - intent: stop
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - intent: goodbye
+  - action: utter_goodbye
+

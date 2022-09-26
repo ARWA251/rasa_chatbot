@@ -1,0 +1,104 @@
+version: '3.1'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+intents:
+- update_account
+- greet
+- inform
+- goodbye
+- affirm
+- stop
+- bot_challenge
+- request_account_form
+- version
+- question
+entities:
+- account_code
+- account_subscriptionValidityDate
+- account_subscription
+- account_startDate
+- account_endDate
+- version
+
+slots:
+  account_code:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: account_code
+  account_startDate:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: account_startDate
+  account_subscriptionValidityDate:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: account_subscriptionValidityDate
+  account_subscription:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: account_subscription
+
+  account_endDate:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: account_endDate
+  version :
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: version
+forms:
+  simple_account_form:
+    required_slots:
+      - account_code
+      - account_subscription
+      - account_subscriptionValidityDate
+      - account_startDate
+      - account_endDate
+responses:
+  utter_greet:
+  - text: Hey! How can I help you?
+  utter_apply_info:
+  - text: to help you updating your account, I will need some information?
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_submit:
+  - text: I will now update your account if your information is correct !
+  utter_ask_continue:
+  - text: Are you sure you want to stop the form?
+  utter_ask_account_code:
+  - text: What is your code?
+  utter_ask_account_subscriptionValidityDate:
+  - text : What is your subscriptionValidityDate
+  utter_ask_account_subscription:
+  - text: What is your subscription?
+  utter_ask_account_startDate:
+  - text: What is your startDate?
+  utter_ask_account_endDate:
+  - text: What is your endDate?
+actions:
+- utter_ask_continue
+- utter_goodbye
+- utter_greet
+- utter_submit
+- validate_simple_account_form
+- action_get_status
+- action_get_version
+- utter_apply_info

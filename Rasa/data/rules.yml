@@ -1,0 +1,57 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+
+- rule: Say 'I need info to....' anytime the user ask to update her/his account 
+  steps:
+  - intent: update_account
+  - action: utter_apply_info  
+
+
+- rule: Activate account Form
+  steps:
+  - intent: question
+  - action: simple_account_form
+  - active_loop: simple_account_form
+
+- rule: Submit account Form
+  condition:
+  - active_loop: simple_account_form
+  steps:
+  - action: simple_account_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit
+  - action: action_get_status
+
+- rule: Interruption in account Form
+  condition:
+  # Condition that form is active.
+  - active_loop: simple_account_form
+  steps:
+  # This unhappy path handles the case of an intent `bot_challenge`.
+  - intent: bot_challenge
+  - action: utter_iamabot
+  # Return to form after handling the `bot_challenge` intent
+  - action: simple_account_form
+  - active_loop: simple_account_form
+
+
+- rule: Get the version
+  steps:
+  - intent: version
+  - action: action_get_version
+
+  
